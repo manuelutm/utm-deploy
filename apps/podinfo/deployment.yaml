@@ -1,14 +1,14 @@
 apiVersion: flagger.app/v1beta1
 kind: Canary
 metadata:
-  name: backend
+  name: podinfo
   namespace: utm-app
 spec:
   # deployment reference
   targetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: backend
+    name: podinfo
   # the maximum time in seconds for the canary deployment
   # to make progress before it is rollback (default 600s)
   progressDeadlineSeconds: 60
@@ -16,7 +16,7 @@ spec:
   autoscalerRef:
     apiVersion: autoscaling/v2beta1
     kind: HorizontalPodAutoscaler
-    name: backend
+    name: podinfo
   service:
     # container port
     port: 9898
@@ -61,12 +61,12 @@ spec:
         url: http://flagger-loadtester.prod/
         metadata:
           type: bash
-          cmd: "curl -sd 'test' http://backend-canary.prod:9898/token | grep token"
+          cmd: "curl -sd 'test' http://podinfo-canary.prod:9898/token | grep token"
       - name: load-test
         type: rollout
         timeout: 15s
         url: http://flagger-loadtester.prod/
         metadata:
           type: cmd
-          cmd: "hey -z 1m -q 10 -c 2 http://backend-canary.prod:9898/"
+          cmd: "hey -z 1m -q 10 -c 2 http://podinfo-canary.prod:9898/"
           logCmdOutput: "true"
