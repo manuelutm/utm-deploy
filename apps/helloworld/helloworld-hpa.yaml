@@ -14,10 +14,10 @@ spec:
   metrics:
     - type: Resource
       resource:
-        name: memory
+        name: cpu
         # scale up if usage is above
         # 99% of the requested CPU (100m)
-        targetAverageUtilization: 50
+        targetAverageUtilization: 80
 ---
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
@@ -34,7 +34,7 @@ spec:
   metrics:
     - type: Resource
       resource:
-        name: memory
+        name: cpu
         # scale up if usage is above
         # 99% of the requested CPU (100m)
-        targetAverageUtilization: 50
+        targetAverageUtilization: 80
