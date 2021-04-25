@@ -38,10 +38,10 @@ spec:
           resources:
             limits:
               memory: "256Mi"
-              cpu: "300m"
+              cpu: "400m"
             requests:
-              memory: "128Mi"
-              cpu: "100m"
+              memory: "Mi"
+              cpu: "400m"
           imagePullPolicy: IfNotPresent #Always
           ports:
             - containerPort: 5000
