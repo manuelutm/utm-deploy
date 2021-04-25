@@ -5,3 +5,4 @@ resources:
   - helloworld-namespace.yaml
   - helloworld-istio.yaml
   - helloworld-v2.yaml
+  - helloworld-hpa.yaml

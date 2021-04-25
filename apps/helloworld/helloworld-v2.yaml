@@ -37,6 +37,7 @@ spec:
           image: istio/examples-helloworld-v2
           resources:
             requests:
+              memory: "128Mi"
               cpu: "100m"
           imagePullPolicy: IfNotPresent #Always
           ports:
