@@ -6,3 +6,4 @@ resources:
   - helloworld-istio.yaml
   - helloworld-v2.yaml
   - helloworld-hpa.yaml
+  - helloworld-nginx.yaml
