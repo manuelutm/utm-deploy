@@ -36,6 +36,9 @@ spec:
         - name: helloworld
           image: istio/examples-helloworld-v1
           resources:
+            limits:
+              memory: "128Mi"
+              cpu: "100m"
             requests:
               memory: "128Mi"
               cpu: "100m"
