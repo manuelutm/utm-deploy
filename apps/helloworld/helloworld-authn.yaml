@@ -1,0 +1,42 @@
+---
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  namespace: hello-world
+  name: helloworld-v1
+spec:
+  selector:
+    matchLabels:
+      app: helloworld
+      version: v1
+  mtls:
+    mode: STRICT
+---
+apiVersion: security.istio.io/v1beta1
+kind: RequestAuthentication
+metadata:
+  name: hello-world-jwt
+  namespace: hello-world
+spec:
+  selector:
+    matchLabels:
+      app: helloworld
+      version: v1
+  jwtRules:
+    - issuer: "https://utm.eu.auth0.com/"
+      jwksUri: https://utm.eu.auth0.com/.well-known/jwks.json
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: hello-world-jwt
+  namespace: hello-world
+spec:
+  selector:
+    matchLabels:
+      app: helloworld
+      version: v1
+  rules:
+    - from:
+        - source:
+            requestPrincipals: ["*"]

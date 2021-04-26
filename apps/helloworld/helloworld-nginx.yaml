@@ -2,7 +2,6 @@
 kind: Service
 apiVersion: v1
 metadata:
-  namespace: hello-world
   name: nginx
 spec:
   selector:
