@@ -17,7 +17,7 @@ spec:
         name: cpu
         # scale up if usage is above
         # 99% of the requested CPU (100m)
-        targetAverageUtilization: 80
+        targetAverageUtilization: 50
 ---
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
